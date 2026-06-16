@@ -1,21 +1,31 @@
 """Routes for user-related operations."""
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
-from backend.storage.database import get_db
-from backend.models.user import User
+from pydantic import BaseModel
 
 user_router = APIRouter(prefix="/users", tags=["users"])
 
 
 @user_router.get("/count", status_code=status.HTTP_200_OK)
-def get_user_count(db=Depends(get_db)):
-    """Get the total number of users."""
+def get_user_count():
+    """Return a placeholder user count (DB not configured)."""
+    return JSONResponse(content={"user_count": 0})
+
+
+class NameIn(BaseModel):
+    name: str
+
+
+@user_router.post("/reverse", status_code=status.HTTP_200_OK)
+def reverse_name(payload: NameIn):
+    """Reverse the provided name and return original + reversed."""
     try:
-        count = db.query(User).count()
-        return JSONResponse(content={"user_count": count})
-    except Exception as e:
+        name = payload.name or ""
+        reversed_name = name[::-1]
+        return JSONResponse(content={"name": name, "reversed": reversed_name})
+    except Exception:
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            content={"message": "An error occurred while fetching user count."},
+            content={"message": "Failed to reverse name."},
         )
