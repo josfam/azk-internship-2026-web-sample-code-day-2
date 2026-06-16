@@ -1,0 +1,235 @@
+@import "./styles/fonts.css";
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @apply m-0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme inline {
+  /* custom fonts */
+  --font-sans: "Inter", sans-serif, -apple-system, "Segoe UI";
+  /* custom spacing */
+
+  --section-min-height: calc(50vh - 100px);
+  --section-px-mobile: calc(var(--spacing) * 4);
+  --section-px-sm: calc(var(--spacing) * 8);
+  --section-px-lg: calc(var(--spacing) * 28);
+  --section-px-xl: calc(var(--spacing) * 70);
+  --section-py-mobile: calc(var(--spacing) * 10);
+  --section-py-sm: calc(var(--spacing) * 12);
+  --section-py-lg: calc(var(--spacing) * 24);
+  --section-py-xl: calc(var(--spacing) * 50);
+  
+  /* nav */
+  --nav-height: calc(var(--spacing) * 16);
+  --nav-top-space: calc(var(--spacing) * 24 + 2rem);
+  --nav-top-space-large: calc(var(--spacing) * 24 + 4rem);
+  --nav-top-space-larger: calc(var(--spacing) * 24 + 6rem);
+  --nav-top-gap: calc(var(--spacing) * 4);
+  --nav-padding: calc(var(--spacing) * 2);
+  --nav-rounding: calc(var(--spacing) * 8);
+  --nav-mobile-spacing-nudge: calc(var(--spacing) * 5);
+
+  /* padding */
+  --card-padding: calc(var(--spacing) * 5);
+  --card-padding-mobile: calc(var(--spacing) * 1);
+  --card-rounding: var(--radius-3xl);
+  --card-rounding-mobile: var(--radius-sm);
+  --container-padding: calc(var(--spacing) * 6);
+  /* sizing */
+  --social-icon-size: calc(var(--spacing) * 10);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.147 0.004 49.25);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.147 0.004 49.25);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.147 0.004 49.25);
+  --primary: oklch(76.9% 0.188 70.08);
+  --primary-foreground: oklch(27.9% 0.077 45.635);
+  --primary-50: oklch(98.7% 0.022 95.277);
+  --primary-100: oklch(96.2% 0.059 95.617);
+  --primary-200: oklch(92.4% 0.12 95.746);
+  --primary-300: oklch(87.9% 0.169 91.605);
+  --primary-400: oklch(82.8% 0.189 84.429);
+  --primary-500: oklch(77.239% 0.17274 65.36); /* primary */
+  --primary-600: oklch(66.6% 0.179 58.318);
+  --primary-700: oklch(55.5% 0.163 48.998);
+  --primary-800: oklch(47.3% 0.137 46.201);
+  --primary-900: oklch(41.4% 0.112 45.904);
+  --primary-950: oklch(27.9% 0.077 45.635);
+
+  --secondary: oklch(72.3% 0.219 149.579);
+  --secondary-foreground: oklch(26.6% 0.065 152.934);
+  --secondary-hover: oklch(62.7% 0.194 149.214);
+  --secondary-hover-foreground: white;
+  --secondary-active: oklch(52.7% 0.154 150.069);
+  --secondary-active-foreground: white;
+  --secondary-50: oklch(98.2% 0.018 155.826);
+  --secondary-100: oklch(96.2% 0.044 156.743);
+  --secondary-200: oklch(92.5% 0.084 155.995);
+  --secondary-300: oklch(87.1% 0.15 154.449);
+  --secondary-400: oklch(79.2% 0.209 151.711);
+  --secondary-500: oklch(72.3% 0.219 149.579); /* secondary */
+  --secondary-600: oklch(62.7% 0.194 149.214);
+  --secondary-700: oklch(52.7% 0.154 150.069);
+  --secondary-800: oklch(44.8% 0.119 151.328);
+  --secondary-900: oklch(39.3% 0.095 152.535);
+  --secondary-950: oklch(26.6% 0.065 152.934);
+
+  --tertiary: oklch(68.5% 0.169 237.323);
+  --tertiary-foreground: oklch(29.3% 0.066 243.157);
+  --tertiary-50: oklch(97.7% 0.013 236.62);
+  --tertiary-100: oklch(95.1% 0.026 236.824);
+  --tertiary-200: oklch(90.1% 0.058 230.902);
+  --tertiary-300: oklch(82.8% 0.111 230.318);
+  --tertiary-400: oklch(74.6% 0.16 232.661);
+  --tertiary-500: oklch(68.5% 0.169 237.323); /* tertiary */
+  --tertiary-600: oklch(58.8% 0.158 241.966);
+  --tertiary-700: oklch(50% 0.134 242.749);
+  --tertiary-800: oklch(44.3% 0.11 240.79);
+  --tertiary-900: oklch(39.1% 0.09 240.876);
+  --tertiary-950: oklch(29.3% 0.066 243.157);
+
+  --gray: #9e9a8a;
+  --gray-foreground: #312f25;
+  --gray-hover: #7d7968;
+  --gray-hover-foreground: white;
+  --gray-active: #716c56;
+  --gray-active-foreground: white;
+  --gray-50: #fcfcfa;
+  --gray-100: #f3f3f1;
+  --gray-200: #e9e8e2;
+  --gray-300: #d8d5ca;
+  --gray-400: #b9b5a7;
+  --gray-500: #9e9a8a; /* gray */
+  --gray-600: #7d7968;
+  --gray-700: #716c56;
+  --gray-800: #5d5847;
+  --gray-900: #454235;
+  --gray-950: #312f25;
+
+  --muted: oklch(0.97 0.001 106.424);
+  --muted-foreground: oklch(0.553 0.013 58.071);
+  --accent: oklch(0.97 0.001 106.424);
+  --accent-foreground: oklch(0.216 0.006 56.043);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.923 0.003 48.717);
+  --input: oklch(0.923 0.003 48.717);
+  --ring: oklch(0.709 0.01 56.259);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0.001 106.423);
+  --sidebar-foreground: oklch(0.147 0.004 49.25);
+  --sidebar-primary: oklch(0.216 0.006 56.043);
+  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-accent: oklch(0.97 0.001 106.424);
+  --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
+  --sidebar-border: oklch(0.923 0.003 48.717);
+  --sidebar-ring: oklch(0.709 0.01 56.259);
+}
+
+.dark {
+  --background: oklch(0.147 0.004 49.25);
+  --foreground: oklch(0.985 0.001 106.423);
+  --card: oklch(0.216 0.006 56.043);
+  --card-foreground: oklch(0.985 0.001 106.423);
+  --popover: oklch(0.216 0.006 56.043);
+  --popover-foreground: oklch(0.985 0.001 106.423);
+  --primary: oklch(0.923 0.003 48.717);
+  --primary-foreground: oklch(0.216 0.006 56.043);
+  --secondary: oklch(0.268 0.007 34.298);
+  --secondary-foreground: oklch(0.985 0.001 106.423);
+  --muted: oklch(0.268 0.007 34.298);
+  --muted-foreground: oklch(0.709 0.01 56.259);
+  --accent: oklch(0.268 0.007 34.298);
+  --accent-foreground: oklch(0.985 0.001 106.423);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.553 0.013 58.071);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.216 0.006 56.043);
+  --sidebar-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-accent: oklch(0.268 0.007 34.298);
+  --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.553 0.013 58.071);
+}
+
+/* text */
+.text-body {
+  @apply text-xl sm:text-2xl;
+}
+
+.text-body-large,
+h1 {
+  @apply text-3xl 2xl:text-4xl text-(--primary-950) mb-4;
+}
+
+.text-body-larger {
+ @apply text-3xl lg:text-4xl xl:text-5xl;
+}
+
+.text-body-largest {
+  @apply text-5xl lg:text-6xl xl:text-6xl;
+}
+
+.required-entry-symbol {
+  @apply text-xl text-red-500;
+}
+
+.btn-cta {
+  @apply flex h-12 w-full min-w-70 items-center justify-center rounded-full bg-(--primary-500) px-6 py-8 text-(--primary-950) hover:cursor-pointer hover:bg-(--primary-600) hover:text-(--primary-100) hover:ring-4 hover:ring-(--primary-500) hover:ring-offset-2 active:scale-95 active:bg-(--primary-700);
+}
+
+.btn-sec {
+  @apply flex h-12 w-full min-w-70 items-center justify-center rounded-full border border-(--secondary-500) bg-transparent px-6 py-8 text-(--primary-950) hover:cursor-pointer hover:bg-(--secondary-600) hover:text-(--secondary-100) hover:ring-4 hover:ring-(--secondary-500) hover:ring-offset-2 active:scale-95 active:bg-(--secondary-700);
+}
+
+.btn-ter {
+  @apply flex h-12 w-full min-w-70 items-center justify-center rounded-full bg-(--tertiary-50)/60 px-6 py-8 text-(--tertiary-700) hover:cursor-pointer hover:bg-(--tertiary-50)/60 hover:text-(--tertiary-700) hover:underline hover:ring-4 hover:ring-(--tertiary-200) hover:ring-offset-2 active:scale-95 active:bg-(--tertiary-700) active:text-(--tertiary-50);
+}
+
+.section-px {
+  @apply px-(--section-px-mobile) sm:px-(--section-px-sm) lg:px-(--section-px-lg) xl:px-(--section-px-xl);
+}
+
+.section-py{
+  @apply py-(--section-py-mobile) sm:py-(--section-py-sm) lg:py-(--section-py-lg) xl:py-(--section-py-lg);
+}
+
+.section-pb {
+  padding-bottom: calc(var(--spacing) * 24);
+}
+
+.pre-footer-bottom-padding {
+  @apply mb-20 sm:mb-40;
+}
+
+.social-icon {
+  @apply h-(--social-icon-size) w-(--social-icon-size) fill-(--primary-800) transition-transform duration-200 ease-in-out hover:scale-120 hover:fill-(--primary-900);
+}
+
+
+.form-input {
+  @apply w-full rounded-lg border border-(--gray-300) bg-white px-4 py-1 whitespace-nowrap;
+}
